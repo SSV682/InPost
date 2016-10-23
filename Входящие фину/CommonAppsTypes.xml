@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CommonAppsTypes</name>
+    </assembly>
+    <members>
+        <member name="T:CommonAppsTypes.Права">
+            <summary>
+            Права на действия с объектом
+            </summary>
+        </member>
+        <member name="F:CommonAppsTypes.Права.НетПрав">
+            <summary>
+            объект недоступен
+            </summary>
+        </member>
+        <member name="F:CommonAppsTypes.Права.Чтение">
+            <summary>
+            Чтение
+            </summary>
+        </member>
+        <member name="F:CommonAppsTypes.Права.Выбор">
+            <summary>
+            Выбор из списка
+            </summary>
+        </member>
+        <member name="F:CommonAppsTypes.Права.Выполнение">
+            <summary>
+            Выполнение
+            </summary>
+        </member>
+        <member name="F:CommonAppsTypes.Права.Создание">
+            <summary>
+            Создание
+            </summary>
+        </member>
+        <member name="F:CommonAppsTypes.Права.Редактирование">
+            <summary>
+            Редактирование
+            </summary>
+        </member>
+        <member name="F:CommonAppsTypes.Права.Удаление">
+            <summary>
+            Удаление
+            </summary>
+        </member>
+        <member name="F:CommonAppsTypes.Права.СоздатьКорневой">
+            <summary>
+            Добавить корневой узел дерева
+            </summary>
+        </member>
+        <member name="F:CommonAppsTypes.Права.Полные">
+            <summary>
+            Полные
+            </summary>
+        </member>
+        <member name="T:CommonAppsTypes.Роль">
+            <summary>
+            Роль  
+            </summary>
+        </member>
+        <member name="F:CommonAppsTypes.Роль.Администратор">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CommonAppsTypes.Роль.Референт">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CommonAppsTypes.Роль.Пользователь">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CommonAppsTypes.СЭД_Экспорта">
+            <summary>
+            В какую СЭД экспортировать
+            </summary>
+        </member>
+    </members>
+</doc>

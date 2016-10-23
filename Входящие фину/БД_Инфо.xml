@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>БД_Инфо</name>
+    </assembly>
+    <members>
+        <member name="T:БД_Инфо.ЗначенияИзБД">
+            <summary>
+            Основные значения БД
+            </summary>
+        </member>
+        <member name="M:БД_Инфо.ЗначенияИзБД.ВыполнитьЗапросReader(System.String,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Выполнить запрос возвращающий набор данных
+            </summary>
+            <param name="SQL">Текст запроса</param>
+            <param name="Params">Массив параметров запроса</param>
+            <returns>список каждый элемент это Dictionary (string) ключ - название поля, (object) значение поля</returns>
+        </member>
+        <member name="M:БД_Инфо.ЗначенияИзБД.ВыполнитьЗапросReader(System.Data.SqlClient.SqlConnection,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Выполнить запрос возвращающий набор данных
+            </summary>
+            <param name="SQL">Текст запроса</param>
+            <param name="Params">Массив параметров запроса</param>
+            <returns>список каждый элемент это Dictionary (string) ключ - название поля, (object) значение поля</returns>
+        </member>
+        <member name="M:БД_Инфо.ЗначенияИзБД.ВыполнитьЗапросScalar(System.String,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Выполнить запрос возвращающий значение
+            </summary>
+            <param name="SQL">Текст запроса</param>
+            <param name="Params">Массив параметров запроса</param>
+            <returns>Результат выполнения запроса, значение из БД (аналог ExecuteScalar() для System.Data.SqlClient.SqlCommand)</returns>
+        </member>
+        <member name="M:БД_Инфо.ЗначенияИзБД.ВыполнитьЗапросScalar(System.Data.SqlClient.SqlConnection,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Выполнить запрос возвращающий значение
+            </summary>
+            <param name="MainSqlConnection">Куда подключаться</param>
+            <param name="SQL">Текст запроса</param>
+            <param name="Params">Массив параметров запроса</param>
+            <returns>Результат выполнения запроса, значение из БД (аналог ExecuteScalar() для System.Data.SqlClient.SqlCommand)</returns>
+        </member>
+        <member name="M:БД_Инфо.ЗначенияИзБД.ПроверитьСуществуетЛиТаблица(System.String,System.String)">
+            <summary>
+            Для проверки существования в БД таблицы
+            </summary>
+            <param name="ИмяТаблицы">Имя проверяемой таблицы</param>
+            <returns>true - таблица существует, false - нет</returns>
+        </member>
+        <member name="M:БД_Инфо.ЗначенияИзБД.ПроверитьСуществуетЛиТаблица(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            Для проверки существования в БД таблицы
+            </summary>
+            <param name="ConnectionString">строка подключения</param>
+            <param name="ИмяТаблицы">Имя проверяемой таблицы</param>
+            <returns>true - таблица существует, false - нет</returns>
+        </member>
+        <member name="M:БД_Инфо.ЗначенияИзБД.ПроверитьСуществуетЛиОбъектБД(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            Для проверки существования в БД таблицы
+            </summary>
+            <param name="MainSqlConnection">Куда подключаться</param>
+            <param name="ИмяОбъекта">Имя объекта проверки</param>
+            <param name="ТипОбъекта">Тип объекта: null - любой тип
+            AF = агрегатная функция (среда CLR)
+            C = ограничение CHECK
+            D = значение по умолчанию (DEFAULT), в ограничении или независимо заданное
+            F = ограничение FOREIGN KEY
+            FN = скалярная функция SQL
+            FS = скалярная функция сборки (среда CLR)
+            FT = возвращающая табличное значение функция сборки (среда CLR)
+            IF = встроенная возвращающая табличное значение функция SQL
+            IT = внутренняя таблица
+            P = хранимая процедура SQL
+            PC = хранимая процедура сборки (среда CLR)
+            PG = структура плана
+            PK = ограничение PRIMARY KEY
+            R = правило (старый стиль, изолированный)
+            RF = процедура фильтра репликации
+            S = системная базовая таблица
+            SN = синоним
+            SQ = очередь обслуживания
+            TA = триггер DML сборки (среда CLR)
+            TF = возвращающая табличное значение функция SQL
+            TR = триггер DML SQL 
+            TT = табличный тип
+            U = таблица (пользовательская)
+            UQ = ограничение UNIQUE
+            V = представление
+            X = расширенная хранимая процедура</param>
+            <returns>true - таблица существует, false - нет</returns>
+        </member>
+        <member name="P:БД_Инфо.ЗначенияИзБД.КодАбонента">
+            <summary>
+            Код абонента под которым Вы работаете в БД
+            </summary>
+            <returns>Код типа int, если -1 то ошибка, что-то не так</returns>
+        </member>
+        <member name="P:БД_Инфо.ЗначенияИзБД.Абонент">
+            <summary>
+            Код абонента под которым Вы работаете в БД
+            </summary>
+            <returns>Код типа int, если -1 то ошибка, что-то не так</returns>
+        </member>
+    </members>
+</doc>

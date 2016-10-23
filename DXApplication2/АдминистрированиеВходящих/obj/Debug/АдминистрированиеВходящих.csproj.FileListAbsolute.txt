@@ -1,0 +1,7 @@
+D:\Софт\Входящие\DXApplication2\АдминистрированиеВходящих\obj\Debug\АдминистрированиеВходящих.csprojResolveAssemblyReference.cache
+D:\Софт\Входящие\DXApplication2\АдминистрированиеВходящих\obj\Debug\АдминистрированиеВходящих.Controls.ConfigureTheRoles.resources
+D:\Софт\Входящие\DXApplication2\АдминистрированиеВходящих\obj\Debug\АдминистрированиеВходящих.Forms.EditRole.resources
+D:\Софт\Входящие\DXApplication2\АдминистрированиеВходящих\obj\Debug\АдминистрированиеВходящих.Properties.Resources.resources
+D:\Софт\Входящие\DXApplication2\АдминистрированиеВходящих\obj\Debug\АдминистрированиеВходящих.ОкноАдминистратора.resources
+D:\Софт\Входящие\DXApplication2\АдминистрированиеВходящих\obj\Debug\АдминистрированиеВходящих.csproj.GenerateResource.Cache
+D:\Софт\Входящие\DXApplication2\АдминистрированиеВходящих\obj\Debug\АдминистрированиеВходящих.exe.licenses

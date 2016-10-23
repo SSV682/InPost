@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6833F87F-CF8B-4DAD-88AA-2D6A17EE5387}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Входящие</RootNamespace>
+    <AssemblyName>Входящие</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Etalon\Входящие\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\..\Билд\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>email.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AppearanceSetter">
+      <HintPath>..\..\..\CommonBins\AppearanceSetter.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonAppSettings, Version=15.2.5.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonBins\CommonAppSettings.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonAppsTypes, Version=15.2.5.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonBins\CommonAppsTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v16.1.UI, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Mvvm.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.1.UI, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.Core.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1.Wizard, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.CodeParser.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v16.1.Extensions, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v16.1.Extensions, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DocInterfaces">
+      <HintPath>..\..\..\CommonBins\DocInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="DocsData, Version=15.1.7.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonBins\Doc\DocsData.dll</HintPath>
+    </Reference>
+    <Reference Include="DynamicForms, Version=15.2.5.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonBins\Doc\DynamicForms.dll</HintPath>
+    </Reference>
+    <Reference Include="GUIBuilderInterfaces, Version=15.2.5.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonBins\Doc\GUIBuilderInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="MetaDataPlus">
+      <HintPath>..\..\..\CommonBins\MetaDataPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="MetaUtils, Version=15.2.5.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonBins\MetaUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Исходящие">
+      <HintPath>..\..\..\CommonBins\Doc\Исходящие.dll</HintPath>
+    </Reference>
+    <Reference Include="ОбработкаLayout, Version=15.2.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonBins\Doc\ОбработкаLayout.dll</HintPath>
+    </Reference>
+    <Reference Include="ФабрикаРедакторов">
+      <HintPath>..\..\..\CommonBins\Doc\ФабрикаРедакторов.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Methods.cs" />
+    <Compile Include="Classes\Operations.cs" />
+    <Compile Include="Classes\StringsF4.cs" />
+    <Compile Include="Forms\AddValueDictionary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddValueDictionary.Designer.cs">
+      <DependentUpon>AddValueDictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CalcForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CalcForm.Designer.cs">
+      <DependentUpon>CalcForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChooseDocuments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChooseDocuments.Designer.cs">
+      <DependentUpon>ChooseDocuments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FreeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FreeForm.Designer.cs">
+      <DependentUpon>FreeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddDocForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddDocForm.designer.cs">
+      <DependentUpon>AddDocForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InCaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InCaseForm.Designer.cs">
+      <DependentUpon>InCaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LimitedSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LimitedSettingsForm.Designer.cs">
+      <DependentUpon>LimitedSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PassForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PassForm.Designer.cs">
+      <DependentUpon>PassForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintPersonalBusiness.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintPersonalBusiness.Designer.cs">
+      <DependentUpon>PrintPersonalBusiness.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RangeOfNumbers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RangeOfNumbers.Designer.cs">
+      <DependentUpon>RangeOfNumbers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReRegistration.Designer.cs">
+      <DependentUpon>ReRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReturnDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReturnDate.Designer.cs">
+      <DependentUpon>ReturnDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReturnYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReturnYear.Designer.cs">
+      <DependentUpon>ReturnYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectForce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectForce.Designer.cs">
+      <DependentUpon>SelectForce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SetAct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SetAct.Designer.cs">
+      <DependentUpon>SetAct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SetInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SetInventory.Designer.cs">
+      <DependentUpon>SetInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TextForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TextForm.Designer.cs">
+      <DependentUpon>TextForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReRegistr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReRegistr.Designer.cs">
+      <DependentUpon>ReRegistr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InControls\Act.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InControls\Act.Designer.cs">
+      <DependentUpon>Act.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InControls\ChoiceAct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InControls\ChoiceAct.Designer.cs">
+      <DependentUpon>ChoiceAct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InControls\ClosedDocuments.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InControls\ClosedDocuments.Designer.cs">
+      <DependentUpon>ClosedDocuments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InControls\Destiny.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InControls\Destiny.Designer.cs">
+      <DependentUpon>Destiny.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InControls\EditorOfDictionaries.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InControls\EditorOfDictionaries.Designer.cs">
+      <DependentUpon>EditorOfDictionaries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InControls\Journal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InControls\Journal.Designer.cs">
+      <DependentUpon>Journal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InControls\FormF4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InControls\FormF4.designer.cs">
+      <DependentUpon>FormF4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InControls\ReturnedDocuments.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InControls\ReturnedDocuments.Designer.cs">
+      <DependentUpon>ReturnedDocuments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InControls\UploadedDocuments.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InControls\UploadedDocuments.Designer.cs">
+      <DependentUpon>UploadedDocuments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintRibbonControllerResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintRibbonControllerResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Print\Card.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Print\Card.Designer.cs">
+      <DependentUpon>Card.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Print\CardPartially.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Print\CardPartially.Designer.cs">
+      <DependentUpon>CardPartially.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Print\CardForPersonalBusiness.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Print\CardForPersonalBusiness.Designer.cs">
+      <DependentUpon>CardForPersonalBusiness.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XRDesignRibbonControllerResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XRDesignRibbonControllerResources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\AddValueDictionary.resx">
+      <DependentUpon>AddValueDictionary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CalcForm.resx">
+      <DependentUpon>CalcForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChooseDocuments.resx">
+      <DependentUpon>ChooseDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FreeForm.resx">
+      <DependentUpon>FreeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddDocForm.resx">
+      <DependentUpon>AddDocForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InCaseForm.resx">
+      <DependentUpon>InCaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LimitedSettingsForm.resx">
+      <DependentUpon>LimitedSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PassForm.resx">
+      <DependentUpon>PassForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintPersonalBusiness.resx">
+      <DependentUpon>PrintPersonalBusiness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RangeOfNumbers.resx">
+      <DependentUpon>RangeOfNumbers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReRegistration.resx">
+      <DependentUpon>ReRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReturnDate.resx">
+      <DependentUpon>ReturnDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReturnYear.resx">
+      <DependentUpon>ReturnYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectForce.resx">
+      <DependentUpon>SelectForce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SetAct.resx">
+      <DependentUpon>SetAct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SetInventory.resx">
+      <DependentUpon>SetInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TextForm.resx">
+      <DependentUpon>TextForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReRegistr.resx">
+      <DependentUpon>ReRegistr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InControls\Act.resx">
+      <DependentUpon>Act.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InControls\ChoiceAct.resx">
+      <DependentUpon>ChoiceAct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InControls\ClosedDocuments.resx">
+      <DependentUpon>ClosedDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InControls\Destiny.resx">
+      <DependentUpon>Destiny.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InControls\EditorOfDictionaries.resx">
+      <DependentUpon>EditorOfDictionaries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InControls\Journal.resx">
+      <DependentUpon>Journal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InControls\FormF4.resx">
+      <DependentUpon>FormF4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InControls\ReturnedDocuments.resx">
+      <DependentUpon>ReturnedDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InControls\UploadedDocuments.resx">
+      <DependentUpon>UploadedDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintRibbonControllerResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PrintRibbonControllerResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print\Card.resx">
+      <DependentUpon>Card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print\CardPartially.resx">
+      <DependentUpon>CardPartially.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print\CardForPersonalBusiness.resx">
+      <DependentUpon>CardForPersonalBusiness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="XRDesignRibbonControllerResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>XRDesignRibbonControllerResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\Data.АктыНаУничтожение.datasource" />
+    <None Include="Properties\DataSources\Data.Вид.datasource" />
+    <None Include="Properties\DataSources\Data.ВидДокумента.datasource" />
+    <None Include="Properties\DataSources\Data.Документы.datasource" />
+    <None Include="Properties\DataSources\Data.ДокументыИсполнителей.datasource" />
+    <None Include="Properties\DataSources\Data.ЖурналОпераций.datasource" />
+    <None Include="Properties\DataSources\Data.Исполнители.datasource" />
+    <None Include="Properties\DataSources\Data.КоличествоЗакрытыхДокументов.datasource" />
+    <None Include="Properties\DataSources\Data.КоличествоЗакрытыхДокументовИсполнителем.datasource" />
+    <None Include="Properties\DataSources\Data.КоличествоЗакрытыхДокументовСКоторымиРаботалИсполнитель.datasource" />
+    <None Include="Properties\DataSources\Data.КомуАдресован.datasource" />
+    <None Include="Properties\DataSources\Data.Подразделения.datasource" />
+    <None Include="Properties\DataSources\Data.Резолюция.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{ddd17bda-7ca7-4fbd-8654-024e295be2b7}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SaveGrid\SaveGrid.csproj">
+      <Project>{8281986e-2cac-4f9a-9b8f-014ee0bbed4a}</Project>
+      <Name>SaveGrid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ФормированиеВедомостей\ФормированиеВедомостей.csproj">
+      <Project>{8937406b-a5cf-4196-8107-46b17f486b3a}</Project>
+      <Name>ФормированиеВедомостей</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="email.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

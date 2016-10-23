@@ -1,0 +1,553 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RtfWriter</name>
+    </assembly>
+    <members>
+        <member name="T:RtfWriter.RtfRenderable">
+            <summary>
+            Internal use only. 
+            Objects that are renderable can emit RTF code.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.RtfRenderable.render">
+            <summary>
+            Internal use only.
+            Emit RTF code.
+            </summary>
+            <returns>RTF code</returns>
+        </member>
+        <member name="T:RtfWriter.RtfBlock">
+            <summary>
+            Internal use only.
+            RtfBlock is a content block that cannot contain other blocks.
+            For example, an image is an RtfBlock because it cannot contain
+            other content block such as another image, a paragraph, a table, 
+            etc.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.RtfBlock.Alignment">
+            <summary>
+            How this block is aligned in its containing block.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.RtfBlock.Margins">
+            <summary>
+            By what distance this block is separated from others in
+            the containing block.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.RtfBlock.DefaultCharFormat">
+            <summary>
+            Default character formats.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.RtfBlock.StartNewPage">
+            <summary>
+            When set to true, this block will be arranged in the beginning
+            of a new page.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.RtfBlock.BlockHead">
+            <summary>
+            Internal use only.
+            Beginning RTF control words for this block.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.RtfBlock.BlockTail">
+            <summary>
+            Internal use only.
+            Ending RTF control word for this block.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.Align">
+            <summary>
+            Horizontal alignment.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.AlignVertical">
+            <summary>
+            Vertical alignment.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.Direction">
+            <summary>
+            Top, bottom, left, and right.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.PaperSize">
+            <summary>
+            Types of paper sizes.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.PaperOrientation">
+            <summary>
+            Types of paper orientaion.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.Lcid">
+            <summary>
+            Types of locality.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.FontStyleFlag">
+            <summary>
+            Types of font styles.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.ImageFileType">
+            <summary>
+            Types of image files.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.BorderStyle">
+            <summary>
+            Types of border styles.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.TwoInOneStyle">
+            <summary>
+            Types of two-in-one style quoting symbols.
+            (For Far East character formatting.)
+            </summary>
+        </member>
+        <member name="T:RtfWriter.HeaderFooterType">
+            <summary>
+            Internal use only.
+            Specify whether a RtfHeaderFooter object is header or footer.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.FontStyle">
+            <summary>
+            Container for a set of font styles. It is helpful when more than
+            one of the font styles (e.g., both bold and italic) are associated with 
+            some characters.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.FontStyle.#ctor">
+            <summary>
+            Internal use only.
+            Constructor that initializes as containing none of the styles.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.FontStyle.#ctor(RtfWriter.FontStyle)">
+            <summary>
+            Internal use only.
+            Copy constructor.
+            </summary>
+            <param name="src"></param>
+        </member>
+        <member name="M:RtfWriter.FontStyle.addStyle(RtfWriter.FontStyleFlag)">
+            <summary>
+            Add a font style to the set. Adding a font style
+            that is already in the set has no effect.
+            </summary>
+            <param name="sty">Font style to be added.</param>
+        </member>
+        <member name="M:RtfWriter.FontStyle.removeStyle(RtfWriter.FontStyleFlag)">
+            <summary>
+            Remove a font style from the set. Removing a font style
+            that is already not in the set has no effect.
+            </summary>
+            <param name="sty">Font style to be removed.</param>
+        </member>
+        <member name="M:RtfWriter.FontStyle.containsStyle(RtfWriter.FontStyleFlag)">
+            <summary>
+            Test whether a font style is in the set.
+            </summary>
+            <param name="sty">Font style to be tested.</param>
+            <returns>True if the font style is in the set; false otherwise.</returns>
+        </member>
+        <member name="P:RtfWriter.FontStyle.IsEmpty">
+            <summary>
+            Indicate whether the set is empty.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.FontDescriptor">
+            <summary>
+            A descriptor for a font. Fonts are assigned as descriptors,
+            not names (e.g., Times New Roman). 
+            </summary>
+        </member>
+        <member name="M:RtfWriter.FontDescriptor.#ctor(System.Int32)">
+            <summary>
+            Internal use only.
+            Constructor.
+            </summary>
+            <param name="descr">Internal representative integer of the font.</param>
+        </member>
+        <member name="P:RtfWriter.FontDescriptor.Value">
+            <summary>
+            Internal use only.
+            Get internal representative integer of the font.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.ColorDescriptor">
+            <summary>
+            A descriptor for a color. Colors are assigned as descriptors,
+            not names (e.g., #ff0000, or RED). 
+            </summary>
+        </member>
+        <member name="M:RtfWriter.ColorDescriptor.#ctor(System.Int32)">
+            <summary>
+            Internal use only.
+            Constructor.
+            </summary>
+            <param name="descr">Internal representative integer for the color.</param>
+        </member>
+        <member name="P:RtfWriter.ColorDescriptor.Value">
+            <summary>
+            Internal use only.
+            Get internal representative integer for the color.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.Margins">
+            <summary>
+            Margin settings for a content block, containing four margin values.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.Margins.#ctor">
+            <summary>
+            Internal use only.
+            Constructor that initializes all four margins as -1.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.Margins.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Constructor that gives initial values for all four margins.
+            </summary>
+            <param name="t">Top margin size in points.</param>
+            <param name="r">Right margin size in points.</param>
+            <param name="b">Bottom margin size in points.</param>
+            <param name="l">Left margin size in points.</param>
+        </member>
+        <member name="P:RtfWriter.Margins.Item(RtfWriter.Direction)">
+            <summary>
+            Indexer that allows getting and setting of one of the four margin values.
+            </summary>
+            <param name="d">The direction at which the margin locates. One of top, 
+            right, bottom, left.</param>
+            <returns>Margin size in points.</returns>
+        </member>
+        <member name="T:RtfWriter.Border">
+            <summary>
+            Border attributes for table cells.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.Border.#ctor">
+            <summary>
+            Internal use only.
+            Default constructor that sets border style to None.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.Border.Equals(System.Object)">
+            <summary>
+            Indirect use only.
+            See if two borders are equal.
+            </summary>
+            <param name="obj">Border object to be compared with.</param>
+            <returns>True if the two borders are equal; false otherwise.</returns>
+        </member>
+        <member name="M:RtfWriter.Border.GetHashCode">
+            <summary>
+            Indirect use only.
+            Differentiate borders.
+            </summary>
+            <returns>A hash code representing different sets of border attributes.</returns>
+        </member>
+        <member name="P:RtfWriter.Border.Style">
+            <summary>
+            Get or set the border style.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.Border.Width">
+            <summary>
+            Get or set the width of the border line.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.Border.Color">
+            <summary>
+            Get or set the border color.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.Borders">
+            <summary>
+            Border settings for a table cell, containing four sets of border attributes.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.Borders.#ctor">
+            <summary>
+            Internal use only.
+            Default constructor that sets all border style to None.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.Borders.Item(RtfWriter.Direction)">
+            <summary>
+            Indexer that gets border attributes for borders in any of the four
+            direction. 
+            </summary>
+            <param name="d">The direction at which the border locates. One of top
+            right, bottom, left.</param>
+            <returns>The border attributes.</returns>
+        </member>
+        <member name="T:RtfWriter.Color">
+            <summary>
+            Colors to be applied in the document. Note that objects of this class
+            cannot be assigned to document directly. Instead, they work through
+            ColorDescriptor objects.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.Color.#ctor">
+            <summary>
+            Default constructor that initialized as black color.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.Color.#ctor(System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Constructor that initializes using RGB values.
+            </summary>
+            <param name="red">Red component of the color.</param>
+            <param name="green">Green component of the color.</param>
+            <param name="blue">Blue component of the color.</param>
+        </member>
+        <member name="M:RtfWriter.Color.#ctor(System.String)">
+            <summary>
+            Constructor that initializes using a string representation of 
+            a hexadecimal value.
+            </summary>
+            <param name="hex">String representation of a hexadecimal value, such
+            as "FF0000" or "00AB12".</param>
+        </member>
+        <member name="M:RtfWriter.Color.Equals(System.Object)">
+            <summary>
+            Indirect use only.
+            See if two colors are the same.
+            </summary>
+            <param name="obj">Color object to be compared with.</param>
+            <returns>True if two colors are identical; false otherwise.</returns>
+        </member>
+        <member name="M:RtfWriter.Color.GetHashCode">
+            <summary>
+            Indirect use only.
+            Differentiate colors.
+            </summary>
+            <returns>A hash code used to differentiate colors.</returns>
+        </member>
+        <member name="P:RtfWriter.Color.Red">
+            <summary>
+            Get or set the red component of the color.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.Color.Green">
+            <summary>
+            Get or set the green component of the color.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.Color.Blue">
+            <summary>
+            Get or set the blue component of the color.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.CellMergeInfo">
+            <summary>
+            Internal use only.
+            A collection of cell merging information associated with each table cell being merged.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.CellMergeInfo.#ctor(RtfWriter.RtfTableCell,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Internal use only.
+            Constructor.
+            </summary>
+            <param name="representative">Representative cell for the cell. 
+            (Usually the one located at top left corner of the group of merged cell.)</param>
+            <param name="rowSpan">Number of rows that this group of merged cells spans.</param>
+            <param name="colSpan">Number of columns that this group of merged cells spans.</param>
+            <param name="rowIndex">The relative row index of the cell within this group 
+            of merged cells.</param>
+            <param name="colIndex">The relative column index of the cell within this group 
+            of merged cells.</param>
+        </member>
+        <member name="P:RtfWriter.CellMergeInfo.RowSpan">
+            <summary>
+            Get the number of rows that this group of merged cells spans.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.CellMergeInfo.ColSpan">
+            <summary>
+            Get the number of columns that this group of merged cells spans.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.CellMergeInfo.RowIndex">
+            <summary>
+            Get the relative row index of the cell within this group of merged cells.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.CellMergeInfo.ColIndex">
+            <summary>
+            Get the relative column index of the cell within this group of merged cells.
+            </summary>
+        </member>
+        <member name="P:RtfWriter.CellMergeInfo.Representative">
+            <summary>
+            Get the representative cell of the cell.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.DefaultValue">
+            <summary>
+            Internal use only.
+            Constant values for default document settings.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.RtfBlockList">
+            <summary>
+            A container for an array of content blocks. For example, a footnote
+            is a RtfBlockList because it may contains a paragraph and an image.
+            </summary>
+        </member>
+        <member name="F:RtfWriter.RtfBlockList._blocks">
+            <summary>
+            Storage for array of content blocks.
+            </summary>
+        </member>
+        <member name="F:RtfWriter.RtfBlockList._defaultCharFormat">
+            <summary>
+            Default character formats within this container.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.RtfBlockList.#ctor">
+            <summary>
+            Internal use only.
+            Default constructor that allows containing all types of content blocks.
+            </summary>
+        </member>
+        <member name="M:RtfWriter.RtfBlockList.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Internal use only.
+            Constructor specifying allowed content blocks to be contained.
+            </summary>
+            <param name="allowParagraph">Whether an RtfParagraph is allowed.</param>
+            <param name="allowFootnote">Whether an RtfFootnote is allowed in contained RtfParagraph.</param>
+            <param name="allowControlWord">Whether an field control word is allowed in contained
+            RtfParagraph.</param>
+            <param name="allowImage">Whether RtfImage is allowed.</param>
+            <param name="allowTable">Whether RtfTable is allowed.</param>
+        </member>
+        <member name="M:RtfWriter.RtfBlockList.addParagraph">
+            <summary>
+            Add a paragraph to this container.
+            </summary>
+            <returns>Paragraph being added.</returns>
+        </member>
+        <member name="M:RtfWriter.RtfBlockList.addImage(System.String,RtfWriter.ImageFileType)">
+            <summary>
+            Add an image to this container.
+            </summary>
+            <param name="imgFname">Filename of the image.</param>
+            <param name="imgType">File type of the image.</param>
+            <returns>Image being added.</returns>
+        </member>
+        <member name="M:RtfWriter.RtfBlockList.addImage(System.String)">
+            <summary>
+            Add an image to this container.
+            </summary>
+            <param name="imgFname">Filename of the image.</param>
+            <returns>Image being added.</returns>
+        </member>
+        <member name="M:RtfWriter.RtfBlockList.addTable(System.Int32,System.Int32,System.Single)">
+            <summary>
+            Add a table to this container.
+            </summary>
+            <param name="rowCount">Number of rows in the table.</param>
+            <param name="colCount">Number of columns in the table.</param>
+            <param name="horizontalWidth">Horizontabl width (in points) of the table.</param>
+            <returns>Table begin added.</returns>
+        </member>
+        <member name="M:RtfWriter.RtfBlockList.transferBlocksTo(RtfWriter.RtfBlockList)">
+            <summary>
+            Internal use only. 
+            Transfer all content blocks to another RtfBlockList object.
+            </summary>
+            <param name="target">Target RtfBlockList object to transfer to.</param>
+        </member>
+        <member name="M:RtfWriter.RtfBlockList.render">
+            <summary>
+            Internal use only. 
+            Emit RTF code.
+            </summary>
+            <returns>Resulting RTF code for this object.</returns>
+        </member>
+        <member name="P:RtfWriter.RtfBlockList.DefaultCharFormat">
+            <summary>
+            Get default character formats within this container.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.RtfCharFormat">
+            <summary>
+            Summary description for RtfCharFormat
+            </summary>
+        </member>
+        <member name="T:RtfWriter.RtfDocument">
+            <summary>
+            Summary description for RtfDocument
+            </summary>
+        </member>
+        <member name="T:RtfWriter.RtfFootnote">
+            <summary>
+            Summary description for RtfFootnote
+            </summary>
+        </member>
+        <member name="T:RtfWriter.RtfHeaderFooter">
+            <summary>
+            Summary description for RtfHeaderFooter
+            </summary>
+        </member>
+        <member name="T:RtfWriter.RtfImage">
+            <summary>
+            Summary description for RtfImage
+            </summary>
+        </member>
+        <member name="T:RtfWriter.RtfParagraph">
+            <summary>
+            Summary description for RtfParagraph
+            </summary>
+        </member>
+        <member name="M:RtfWriter.RtfParagraph.addCharFormat(System.Int32,System.Int32)">
+            <summary>
+            Add a character formatting to a range in this paragraph.
+            To specify the whole paragraph as the range, set begin = end = -1.
+            Format that is added latter will override the former, if their 
+            range overlays each other.
+            </summary>
+            <param name="begin">Beginning of the range</param>
+            <param name="end">End of the range</param>
+        </member>
+        <member name="T:RtfWriter.RtfTable">
+            <summary>
+            Summary description for RtfTable
+            </summary>
+        </member>
+        <member name="P:RtfWriter.RtfTable.TitleRowCount">
+            <summary>
+            Title row will be displayed in every page on which the table appears.
+            </summary>
+        </member>
+        <member name="T:RtfWriter.RtfTableCell">
+            <summary>
+            Summary description for RtfTableCell
+            </summary>
+        </member>
+        <member name="T:RtfWriter.RtfUtility">
+            <summary>
+            Summary description for RtfUtility
+            </summary>
+        </member>
+        <member name="M:RtfWriter.RtfUtility.big5Encode(System.String)">
+            <summary>
+            big5 encoding (preserve this function for failure restoration)
+            </summary>
+            <param name="str">string to be encoded</param>
+            <returns>encoded string</returns>
+        </member>
+    </members>
+</doc>

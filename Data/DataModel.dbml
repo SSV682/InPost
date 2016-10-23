@@ -1,0 +1,523 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="InPost_test" Class="DataModelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SLON;Initial Catalog=InPost_test;Integrated Security=True" SettingsObjectName="Data.Properties.Settings" SettingsPropertyName="InPost_testConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.АктыНаУничтожение" Member="АктыНаУничтожениеs">
+    <Type Name="АктыНаУничтожение">
+      <Column Name="Код_акта" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Дата" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="АктИсполнен" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Индекс" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="НомерАкта" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Год" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ДатаСоздания" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ДокументСоздан" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="АктыНаУничтожение_ДокументыРедактора" Member="ДокументыРедактораs" ThisKey="Код_акта" OtherKey="Код_акта" Type="ДокументыРедактора" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ШаблоныКратСод" Member="ШаблоныКратСодs">
+    <Type Name="ШаблоныКратСод">
+      <Column Name="id_шаблона" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Шаблон" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ВидДокумента" Member="ВидДокументаs">
+    <Type Name="ВидДокумента">
+      <Column Name="id_видДокумента" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Вид" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Association Name="ВидДокумента_Документы" Member="Документыs" ThisKey="id_видДокумента" OtherKey="id_виддокумента" Type="Документы" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ВидИКраткоеСодержание" Member="ВидИКраткоеСодержаниеs">
+    <Type Name="ВидИКраткоеСодержание">
+      <Column Name="id_записи" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_документа" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Текст" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="ПризнакПечати" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="НомерСтроки" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Документы_ВидИКраткоеСодержание" Member="Документы" ThisKey="id_документа" OtherKey="id_документа" Type="Документы" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ВидимостьДокументаПользователями" Member="ВидимостьДокументаПользователямиs">
+    <Type Name="ВидимостьДокументаПользователями">
+      <Column Name="id_записи" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_документа" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="id_исполнителя" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="редактируемый" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="видимый" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Документы_ВидимостьДокументаПользователями" Member="Документы" ThisKey="id_документа" OtherKey="id_документа" Type="Документы" IsForeignKey="true" />
+      <Association Name="Исполнители_ВидимостьДокументаПользователями" Member="Исполнители" ThisKey="id_исполнителя" OtherKey="id_исполнителя" Type="Исполнители" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ВидимостьПольномочийПользователя" Member="ВидимостьПольномочийПользователяs">
+    <Type Name="ВидимостьПольномочийПользователя">
+      <Column Name="id_записи" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_подразделения" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_пользователя" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ПодразделенияИсполнителей_ВидимостьПольномочийПользователя" Member="ПодразделенияИсполнителей" ThisKey="id_подразделения" OtherKey="id_подразделения" Type="ПодразделенияИсполнителей" IsForeignKey="true" />
+      <Association Name="Пользователи_ВидимостьПольномочийПользователя" Member="Пользователи" ThisKey="id_пользователя" OtherKey="id_пользователя" Type="Пользователи" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Грифы" Member="Грифыs">
+    <Type Name="Грифы">
+      <Column Name="id_грифа" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Гриф" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Грифы_Документы" Member="Документыs" ThisKey="id_грифа" OtherKey="id_грифа" Type="Документы" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Документы" Member="Документыs">
+    <Type Name="Документы">
+      <Column Name="id_документа" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_грифа" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="РегНомер" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="ВходящийНомер" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ДатаПодписи" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ДатаРегистрации" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="id_подразделения" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="НомерЭкземпляра" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="КоличествоЛистовЭкзепляра" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="КоличествоЛистовПриложения" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_получателя" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_журанала" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_пользователя" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Код_акта" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ИсполнениеНомер" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="ДатаИсполнения" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ДелоНомер" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Том" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Лист" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Индекс" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="НазваниеДокумента" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="НазваниеПриложения" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="Подписной" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ПризнакПечати" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="НомераПриложений" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="КомментарийКому" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="КомментарийОткуда" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="запретИзменения" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="номерДокумента" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="от" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Наличие" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="от2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_виддокумента" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Акт" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ПризнакПечатиВЖурнале" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ДатаКонтроля" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ДопМатериалы" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Исполнение" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="НаУдаление" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ПолныйВходящийНомер" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ДатаВозврата" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Вернуть" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Закрыт" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Перерегистрирован" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="id_исполнителя" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="WhenChanged" />
+      <Association Name="Документы_ВидИКраткоеСодержание" Member="ВидИКраткоеСодержаниеs" ThisKey="id_документа" OtherKey="id_документа" Type="ВидИКраткоеСодержание" />
+      <Association Name="Документы_ВидимостьДокументаПользователями" Member="ВидимостьДокументаПользователямиs" ThisKey="id_документа" OtherKey="id_документа" Type="ВидимостьДокументаПользователями" />
+      <Association Name="Документы_ЖурналОпераций" Member="ЖурналОперацийs" ThisKey="id_документа" OtherKey="id_документа" Type="ЖурналОпераций" />
+      <Association Name="Документы_Резолюция" Member="Резолюцияs" ThisKey="id_документа" OtherKey="id_документа" Type="Резолюция" />
+      <Association Name="ВидДокумента_Документы" Member="ВидДокумента" ThisKey="id_виддокумента" OtherKey="id_видДокумента" Type="ВидДокумента" IsForeignKey="true" />
+      <Association Name="Грифы_Документы" Member="Грифы" ThisKey="id_грифа" OtherKey="id_грифа" Type="Грифы" IsForeignKey="true" />
+      <Association Name="Журналы_Документы" Member="Журналы" ThisKey="id_журанала" OtherKey="id_журнала" Type="Журналы" IsForeignKey="true" />
+      <Association Name="КомуАдресован_Документы" Member="КомуАдресован" ThisKey="id_получателя" OtherKey="id_получателя" Type="КомуАдресован" IsForeignKey="true" />
+      <Association Name="Подразделения_Документы" Member="Подразделения" ThisKey="id_подразделения" OtherKey="id_подразделения" Type="Подразделения" IsForeignKey="true" />
+      <Association Name="Пользователи_Документы" Member="Пользователи" ThisKey="id_пользователя" OtherKey="id_пользователя" Type="Пользователи" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ДокументыРедактора" Member="ДокументыРедактораs">
+    <Type Name="ДокументыРедактора">
+      <Column Name="id_документаРедактора" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Код_акта" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Путь" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="id_пользователя" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="АктыНаУничтожение_ДокументыРедактора" Member="АктыНаУничтожение" ThisKey="Код_акта" OtherKey="Код_акта" Type="АктыНаУничтожение" IsForeignKey="true" />
+      <Association Name="Пользователи_ДокументыРедактора" Member="Пользователи" ThisKey="id_пользователя" OtherKey="id_пользователя" Type="Пользователи" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ЖурналОпераций" Member="ЖурналОперацийs">
+    <Type Name="ЖурналОпераций">
+      <Column Name="id_записи" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_операции" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="id_документа" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="id_пользователя" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Комментарий" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="датаНачалаОперации" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="датаКонцаОперации" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="id_исполнителя" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ЖурналОпераций_Резолюция" Member="Резолюцияs" ThisKey="id_записи" OtherKey="id_записи_операции" Type="Резолюция" />
+      <Association Name="Документы_ЖурналОпераций" Member="Документы" ThisKey="id_документа" OtherKey="id_документа" Type="Документы" IsForeignKey="true" />
+      <Association Name="Операции_ЖурналОпераций" Member="Операции" ThisKey="id_операции" OtherKey="id_операции" Type="Операции" IsForeignKey="true" />
+      <Association Name="Пользователи_ЖурналОпераций" Member="Пользователи" ThisKey="id_пользователя" OtherKey="id_пользователя" Type="Пользователи" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Журналы" Member="Журналыs">
+    <Type Name="Журналы">
+      <Column Name="id_журнала" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Наименование" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Начат" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Окончен" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="КоличествоЛистов" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ТекущаяСтраница" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Тип_Журнала" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ТекущийТом" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ТекущаяПозиция" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Журналы_Документы" Member="Документыs" ThisKey="id_журнала" OtherKey="id_журанала" Type="Документы" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ИсполненыеДокументы" Member="ИсполненыеДокументыs">
+    <Type Name="ИсполненыеДокументы">
+      <Column Name="id_записи" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_исполнителя" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="год" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_документа" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Исполнители" Member="Исполнителиs">
+    <Type Name="Исполнители">
+      <Column Name="id_исполнителя" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Исполнитель" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Удален" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="id_подразделения" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Исполнители_ВидимостьДокументаПользователями" Member="ВидимостьДокументаПользователямиs" ThisKey="id_исполнителя" OtherKey="id_исполнителя" Type="ВидимостьДокументаПользователями" />
+      <Association Name="Исполнители_КомуАдресован" Member="КомуАдресованs" ThisKey="id_исполнителя" OtherKey="id_исполнителя" Type="КомуАдресован" />
+      <Association Name="ПодразделенияИсполнителей_Исполнители" Member="ПодразделенияИсполнителей" ThisKey="id_подразделения" OtherKey="id_подразделения" Type="ПодразделенияИсполнителей" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.КомуАдресован" Member="КомуАдресованs">
+    <Type Name="КомуАдресован">
+      <Column Name="id_получателя" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="КомуАдресован" Member="КомуАдресован1" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="id_исполнителя" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Удален" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="КомуАдресован_Документы" Member="Документыs" ThisKey="id_получателя" OtherKey="id_получателя" Type="Документы" />
+      <Association Name="Исполнители_КомуАдресован" Member="Исполнители" ThisKey="id_исполнителя" OtherKey="id_исполнителя" Type="Исполнители" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Операции" Member="Операцииs">
+    <Type Name="Операции">
+      <Column Name="id_операции" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="НаименованиеОперации" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Операции_ЖурналОпераций" Member="ЖурналОперацийs" ThisKey="id_операции" OtherKey="id_операции" Type="ЖурналОпераций" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Подразделения" Member="Подразделенияs">
+    <Type Name="Подразделения">
+      <Column Name="id_подразделения" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="НазваниеПодразделения" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="Индекс" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Префикс" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="Удален" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Подразделения_Документы" Member="Документыs" ThisKey="id_подразделения" OtherKey="id_подразделения" Type="Документы" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ПодразделенияИсполнителей" Member="ПодразделенияИсполнителейs">
+    <Type Name="ПодразделенияИсполнителей">
+      <Column Name="id_подразделения" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="НазваниепПодразделения" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="ПодразделенияИсполнителей_ВидимостьПольномочийПользователя" Member="ВидимостьПольномочийПользователяs" ThisKey="id_подразделения" OtherKey="id_подразделения" Type="ВидимостьПольномочийПользователя" />
+      <Association Name="ПодразделенияИсполнителей_Исполнители" Member="Исполнителиs" ThisKey="id_подразделения" OtherKey="id_подразделения" Type="Исполнители" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Пользователи" Member="Пользователиs">
+    <Type Name="Пользователи">
+      <Column Name="id_пользователя" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Логин" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ИмяВСистеме" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Фамилия" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Имя" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Отчество" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Пароль" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Должность" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Звание" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_роли" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="id_исполнителя" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Пользователи_ВидимостьПольномочийПользователя" Member="ВидимостьПольномочийПользователяs" ThisKey="id_пользователя" OtherKey="id_пользователя" Type="ВидимостьПольномочийПользователя" />
+      <Association Name="Пользователи_Документы" Member="Документыs" ThisKey="id_пользователя" OtherKey="id_пользователя" Type="Документы" />
+      <Association Name="Пользователи_ДокументыРедактора" Member="ДокументыРедактораs" ThisKey="id_пользователя" OtherKey="id_пользователя" Type="ДокументыРедактора" />
+      <Association Name="Пользователи_ЖурналОпераций" Member="ЖурналОперацийs" ThisKey="id_пользователя" OtherKey="id_пользователя" Type="ЖурналОпераций" />
+      <Association Name="Пользователи_Пользователи" Member="Пользователи2" ThisKey="id_пользователя" OtherKey="id_пользователя" Type="Пользователи" Cardinality="One" />
+      <Association Name="Пользователи_РазмерыГрида" Member="РазмерыГридаs" ThisKey="id_пользователя" OtherKey="id_пользователя" Type="РазмерыГрида" />
+      <Association Name="Пользователи_Пользователи" Member="Пользователи1" ThisKey="id_пользователя" OtherKey="id_пользователя" Type="Пользователи" IsForeignKey="true" />
+      <Association Name="РолиПолномочийПользователей_Пользователи" Member="РолиПолномочийПользователей" ThisKey="id_роли" OtherKey="id_роли" Type="РолиПолномочийПользователей" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.РазмерыГрида" Member="РазмерыГридаs">
+    <Type Name="РазмерыГрида">
+      <Column Name="id_записи" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_пользователя" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="название_грида" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="название_колонки" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ширина_колонки" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Пользователи_РазмерыГрида" Member="Пользователи" ThisKey="id_пользователя" OtherKey="id_пользователя" Type="Пользователи" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Резолюция" Member="Резолюцияs">
+    <Type Name="Резолюция">
+      <Column Name="id_записи" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_документа" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="НомерСтроки" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Текст" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="ПризнакПечати" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="id_записи_операции" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Документы_Резолюция" Member="Документы" ThisKey="id_документа" OtherKey="id_документа" Type="Документы" IsForeignKey="true" />
+      <Association Name="ЖурналОпераций_Резолюция" Member="ЖурналОпераций" ThisKey="id_записи_операции" OtherKey="id_записи" Type="ЖурналОпераций" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.РолиПолномочийПользователей" Member="РолиПолномочийПользователейs">
+    <Type Name="РолиПолномочийПользователей">
+      <Column Name="id_роли" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Название_роли" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="Регистрация" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Редактирвоание" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ПросмотрСобственныхДокументов" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ПросмотрДокументовОтдела" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ПросмотрВсехДокументов" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ПечатьКарточек" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ПечатьВедомостей" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ПечатьЖурнала" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="РаботатьСАктами" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="СмотретьСтатистику" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="РедактироватьСловари" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="РолиПолномочийПользователей_Пользователи" Member="Пользователиs" ThisKey="id_роли" OtherKey="id_роли" Type="Пользователи" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ДокРедактор" Member="ДокРедакторs">
+    <Type Name="ДокРедактор">
+      <Column Name="Код_акта" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="НомерАкта" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="КоличествоДокументов" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Путь" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.МестоположениеДокумента" Member="МестоположениеДокументаs">
+    <Type Name="МестоположениеДокумента">
+      <Column Name="id_записи" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_документа" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="id_операции" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="датаНачалаОперации" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="id_исполнителя" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Комментарий" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ДокументыИсполнителей" Member="ДокументыИсполнителейs">
+    <Type Name="ДокументыИсполнителей">
+      <Column Name="Исполнитель" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Год" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="КоличествоНеОтработанныхДокументов" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.КоличествоЗакрытыхДокументов" Member="КоличествоЗакрытыхДокументовs">
+    <Type Name="КоличествоЗакрытыхДокументов">
+      <Column Name="Год" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="КоличествоДокументов" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.КоличествоЗакрытыхДокументовИсполнителем" Member="КоличествоЗакрытыхДокументовИсполнителемs">
+    <Type Name="КоличествоЗакрытыхДокументовИсполнителем">
+      <Column Name="Исполнитель" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Год" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="КоличестовДокументов" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetDocumentsByView" Method="GetDocumentsByView" IsComposable="true">
+    <Parameter Name="yearS" Type="System.Int32" DbType="Int" />
+    <Parameter Name="stringS" Type="System.String" DbType="VarChar(8000)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.УдалитьПоследнююРезолюцию" Method="УдалитьПоследнююРезолюцию">
+    <Parameter Name="Id_doc" Parameter="id_doc" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetDocumentsByYear" Method="GetDocumentsByYear">
+    <Parameter Name="year" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetDocumentsByYearResult">
+      <Column Name="id_документа" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="id_грифа" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="РегНомер" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="ВходящийНомер" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ДатаПодписи" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ДатаРегистрации" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="id_подразделения" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="НомерЭкземпляра" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="КоличествоЛистовЭкзепляра" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="КоличествоЛистовПриложения" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_получателя" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_журанала" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_пользователя" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Код_акта" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ИсполнениеНомер" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="ДатаИсполнения" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ДелоНомер" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Том" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Лист" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Индекс" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="НазваниеДокумента" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="НазваниеПриложения" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="Подписной" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ПризнакПечати" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="НомераПриложений" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="КомментарийКому" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="КомментарийОткуда" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="запретИзменения" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="номерДокумента" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="от" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Наличие" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="от2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_виддокумента" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Акт" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ПризнакПечатиВЖурнале" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ДатаКонтроля" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ДопМатериалы" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Исполнение" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="НаУдаление" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ПолныйВходящийНомер" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ДатаВозврата" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Вернуть" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Закрыт" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Перерегистрирован" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="id_исполнителя" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetExecutor" Method="GetExecutor">
+    <Parameter Name="Id_doc" Parameter="id_doc" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="GetExecutorResult">
+      <Column Name="Исполнитель" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetExecutorByRecipient" Method="GetExecutorByRecipient">
+    <Parameter Name="id_recipient" Type="System.Int16" DbType="SmallInt" />
+    <ElementType Name="GetExecutorByRecipientResult">
+      <Column Name="id_исполнителя" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetIdDocumentsFromExecutor" Method="GetIdDocumentsFromExecutor">
+    <Parameter Name="id_executor" Type="System.Int16" DbType="SmallInt" />
+    <ElementType Name="GetIdDocumentsFromExecutorResult">
+      <Column Name="id_документа" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetLocation" Method="GetLocation">
+    <Parameter Name="Id_doc" Parameter="id_doc" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="GetLocationResult">
+      <Column Name="Местонахождения" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.MyProc6" Method="MyProc6">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ЗаписатьДанныйВТаблицуВидимостиДокументов" Method="ЗаписатьДанныйВТаблицуВидимостиДокументов">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ОчиститьПоляАкта" Method="ОчиститьПоляАкта">
+    <Parameter Name="Id_doc" Parameter="id_doc" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.РедактироватьДанныйВТаблицуВидимостиДокументов" Method="РедактироватьДанныйВТаблицуВидимостиДокументов">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetDocsByView" Method="GetDocsByView" IsComposable="true">
+    <Parameter Name="stringS" Type="System.String" DbType="VarChar(8000)" />
+    <Parameter Name="yearS" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetDocsByViewResult">
+      <Column Name="id_документа" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="id_грифа" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="РегНомер" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="ВходящийНомер" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ДатаПодписи" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ДатаРегистрации" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="id_подразделения" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="НомерЭкземпляра" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="КоличествоЛистовЭкзепляра" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="КоличествоЛистовПриложения" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_получателя" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="id_журанала" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_пользователя" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Код_акта" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ИсполнениеНомер" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="ДатаИсполнения" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ДелоНомер" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Том" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Лист" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Индекс" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="НазваниеДокумента" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="НазваниеПриложения" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="Подписной" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ПризнакПечати" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="НомераПриложений" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="КомментарийКому" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="КомментарийОткуда" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="запретИзменения" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="номерДокумента" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="от" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Наличие" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="от2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_виддокумента" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Акт" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ПризнакПечатиВЖурнале" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ДатаКонтроля" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ДопМатериалы" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Исполнение" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="НаУдаление" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ПолныйВходящийНомер" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ДатаВозврата" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Вернуть" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Закрыт" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Перерегистрирован" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="id_исполнителя" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ПолучитьВходящийНомер" Method="ПолучитьВходящийНомер" IsComposable="true">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetDocsByYear" Method="GetDocsByYear" IsComposable="true">
+    <Parameter Name="yearS" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetDocsByYearResult">
+      <Column Name="id_документа" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="id_грифа" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="РегНомер" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="ВходящийНомер" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ДатаПодписи" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ДатаРегистрации" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="id_подразделения" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="НомерЭкземпляра" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="КоличествоЛистовЭкзепляра" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="КоличествоЛистовПриложения" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_получателя" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="id_журанала" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_пользователя" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Код_акта" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ИсполнениеНомер" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="ДатаИсполнения" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ДелоНомер" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Том" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Лист" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Индекс" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="НазваниеДокумента" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="НазваниеПриложения" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="Подписной" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ПризнакПечати" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="НомераПриложений" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="КомментарийКому" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="КомментарийОткуда" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="запретИзменения" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="номерДокумента" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="от" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Наличие" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="от2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_виддокумента" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Акт" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ПризнакПечатиВЖурнале" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ДатаКонтроля" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ДопМатериалы" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Исполнение" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Name="НаУдаление" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ПолныйВходящийНомер" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ДатаВозврата" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Вернуть" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Закрыт" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Перерегистрирован" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="id_исполнителя" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ПолучитьIDПользователя" Method="ПолучитьIDПользователя" IsComposable="true">
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

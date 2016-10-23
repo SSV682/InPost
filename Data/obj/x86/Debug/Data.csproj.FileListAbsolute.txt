@@ -1,0 +1,9 @@
+C:\CS\Apps\Входящие\Data\obj\x86\Debug\Data.csprojResolveAssemblyReference.cache
+C:\CS\Apps\Входящие\Data\obj\x86\Debug\Data.dll
+C:\CS\Apps\Входящие\Data\obj\x86\Debug\Data.pdb
+C:\CS\Etalon\Входящие\Data.dll
+C:\CS\Etalon\Входящие\Data.pdb
+D:\Софт\Входящие\Data\obj\x86\Debug\Data.dll
+D:\Софт\Входящие\Data\obj\x86\Debug\Data.pdb
+D:\Etalon\Входящие\Data.dll
+D:\Etalon\Входящие\Data.pdb

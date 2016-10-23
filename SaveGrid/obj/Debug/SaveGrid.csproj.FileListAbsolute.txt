@@ -1,0 +1,12 @@
+C:\CS\Etalon\Входящие\SaveGrid.dll.config
+C:\CS\Etalon\Входящие\SaveGrid.dll
+C:\CS\Etalon\Входящие\SaveGrid.pdb
+C:\CS\Apps\Входящие\SaveGrid\obj\Debug\SaveGrid.csprojResolveAssemblyReference.cache
+C:\CS\Apps\Входящие\SaveGrid\obj\Debug\SaveGrid.dll
+C:\CS\Apps\Входящие\SaveGrid\obj\Debug\SaveGrid.pdb
+D:\Софт\Входящие\SaveGrid\obj\Debug\SaveGrid.csprojResolveAssemblyReference.cache
+D:\Софт\Входящие\SaveGrid\obj\Debug\SaveGrid.dll
+D:\Софт\Входящие\SaveGrid\obj\Debug\SaveGrid.pdb
+D:\Etalon\Входящие\SaveGrid.dll.config
+D:\Etalon\Входящие\SaveGrid.dll
+D:\Etalon\Входящие\SaveGrid.pdb
